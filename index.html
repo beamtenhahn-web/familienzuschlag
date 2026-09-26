@@ -250,6 +250,46 @@ background:radial-gradient(50% 50% at 50% 100%,rgba(255,185,93,.19),transparent 
 .srcs{font-size:.8rem;line-height:1.7;color:#7C8595;word-break:break-word}
 
 
+
+/* ---------- RECHNER ---------- */
+.calc{background:linear-gradient(140deg,var(--navy) 0%,var(--navy4) 100%);color:#fff;
+border-radius:var(--r);padding:clamp(22px,4vw,32px);box-shadow:var(--shl);position:relative;overflow:hidden}
+.calc::before{content:"";position:absolute;inset:auto -25% -70% -25%;height:150%;
+background:radial-gradient(50% 50% at 50% 100%,rgba(255,185,93,.16),transparent 66%)}
+.calc>*{position:relative}
+.calc h3{font-size:clamp(1.15rem,3vw,1.4rem);letter-spacing:-.022em}
+.calc .csub{margin-top:8px;font-size:.95rem;color:#B9C1D0;max-width:56ch}
+.fields{display:grid;gap:16px;margin-top:22px}
+@media(min-width:640px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fld{min-width:0}
+.fld label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.11em;
+text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.fld select{width:100%;font-family:inherit;font-size:1rem;padding:11px 36px 11px 13px;
+border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);
+color:#fff;appearance:none;cursor:pointer;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%23FFB95D' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+background-repeat:no-repeat;background-position:right 13px center}
+.fld select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fld select option{background:var(--navy3);color:#fff}
+.chkline{display:flex;align-items:flex-start;gap:11px;margin-top:16px;cursor:pointer;font-size:.93rem;color:#D5DBE6}
+.chkline input{appearance:none;width:20px;height:20px;flex:0 0 20px;margin-top:1px;
+border:2px solid rgba(255,255,255,.34);border-radius:6px;background:transparent;cursor:pointer;position:relative;transition:background .15s,border-color .15s}
+.chkline input:checked{background:var(--gold);border-color:var(--gold)}
+.chkline input:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+border:solid #241a08;border-width:0 2.5px 2.5px 0;transform:rotate(43deg)}
+.out{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.16)}
+.out .big{font-size:clamp(2.1rem,7vw,3.1rem);font-weight:900;letter-spacing:-.034em;color:var(--gold);line-height:1.05}
+.out .cap{font-size:.86rem;color:#AEB7C6;margin-top:5px}
+.breakdown{margin-top:18px;display:grid;gap:7px;font-size:.92rem;color:#C3CBD8}
+.breakdown div{display:flex;justify-content:space-between;gap:14px;
+padding-bottom:7px;border-bottom:1px dashed rgba(255,255,255,.13)}
+.breakdown div:last-child{border-bottom:none}
+.breakdown span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:#fff;font-weight:600}
+.cmp{margin-top:18px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.06);
+border-left:3px solid var(--gold);font-size:.93rem;color:#D5DBE6}
+.cmp b{color:#fff}
+.cnote{margin-top:14px;font-size:.86rem;color:#9AA4B4;line-height:1.55}
+
 /* ---------- CHART ---------- */
 .chart{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:var(--r);
 padding:24px 22px 18px;box-shadow:var(--sh)}
@@ -325,8 +365,8 @@ body{padding-bottom:0}
   <h1 class="rv d1">Gleiches Amt. Drei Kinder. <span class="hl">756 Euro</span> Unterschied.</h1>
   <p class="lead rv d2">Zwei Beamtinnen, dieselbe Laufbahn, dieselbe Familie. Die eine arbeitet in Hessen und bekommt für ihre Familie 1.729,52 Euro im Monat obendrauf. Die andere in Niedersachsen bekommt 973,95 Euro. Der Unterschied ist kein Fehler. Er ist geltendes Recht in siebzehn Varianten.</p>
   <div class="hcta rv d3">
-    <a class="btn btn-g" href="#vergleich">Alle 17 Dienstherren <span class="ar">↓</span></a>
-    <a class="btn btn-o" href="#fallen">Wo Geld verloren geht</a>
+    <a class="btn btn-g" href="#rechner">Deinen Betrag berechnen <span class="ar">↓</span></a>
+    <a class="btn btn-o" href="#vergleich">Alle 17 Dienstherren</a>
   </div>
   <div class="hstats rv d4">
     <div class="hstat"><b>755,57 €</b><span>Abstand Hessen ↔ Niedersachsen, monatlich</span></div>
@@ -386,9 +426,54 @@ body{padding-bottom:0}
   <p class="rv" style="margin-top:26px">Noch eine Systematikfalle, die in fast jedem Ratgebertext steht: Die Stufen 2, 3, 4 sind keine Kinderzuschläge, sondern <strong>Gesamtbeträge</strong>, in denen Stufe 1 bereits steckt. Wer Stufe 2 und Stufe 1 addiert, zählt Stufe 1 doppelt. Der kinderbezogene Anteil ist immer der Differenzbetrag.</p>
 </div>
 </section>
-<section id="vergleich">
+<section id="rechner">
 <div class="wrap prose">
-  <div class="eyebrow rv"><span class="num">03</span>Der Vergleich</div>
+  <div class="eyebrow rv"><span class="num">03</span>Dein Betrag</div>
+  <h2 class="rv">Rechne es für dich aus</h2>
+  <p class="sub rv d1">Drei Angaben genügen. Der Rechner berücksichtigt auch die beiden Regeln, an denen die meisten scheitern: Stufe 1 gibt es auch ohne Trauschein, und sie wird halbiert, wenn beide im öffentlichen Dienst sind.</p>
+
+  <div class="narrow" style="max-width:820px">
+    <div class="calc rv d2">
+      <h3>Familienzuschlag-Rechner</h3>
+      <p class="csub">Stand 2026, höhere Besoldungsgruppen. Ohne die Erhöhungsbeträge für A 3 bis A 10 und ohne einkommensgeprüfte Zusatzleistungen.</p>
+
+      <div class="fields">
+        <div class="fld">
+          <label for="f-land">Dienstherr</label>
+          <select id="f-land"></select>
+        </div>
+        <div class="fld">
+          <label for="f-kinder">Kinder mit Kindergeldanspruch</label>
+          <select id="f-kinder">
+            <option value="0">keine</option>
+            <option value="1">1 Kind</option>
+            <option value="2" selected>2 Kinder</option>
+            <option value="3">3 Kinder</option>
+            <option value="4">4 Kinder</option>
+            <option value="5">5 Kinder</option>
+          </select>
+        </div>
+        <div class="fld" style="grid-column:1/-1">
+          <label for="f-stand">Deine Situation</label>
+          <select id="f-stand">
+            <option value="verh" selected>verheiratet oder in eingetragener Lebenspartnerschaft</option>
+            <option value="allein">unverheiratet, Kind lebt in meinem Haushalt</option>
+            <option value="keins">weder noch</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="chkline"><input type="checkbox" id="f-oed"><span>Meine Partnerin oder mein Partner ist ebenfalls im öffentlichen Dienst und hat Anspruch auf Stufe 1</span></label>
+
+      <div class="out" id="out" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="alt" id="vergleich">
+<div class="wrap prose">
+  <div class="eyebrow rv"><span class="num">04</span>Der Vergleich</div>
   <h2 class="rv">Siebzehn Dienstherren, siebzehn Systeme</h2>
   <p class="sub rv d1">Seit der Föderalismusreform 2006 regelt jedes Land seine Besoldung selbst. Was dabei herauskam, ist kein Flickenteppich mit kleinen Rändern, sondern ein Spektrum, das sich mehr als verdoppelt.</p>
 
@@ -427,7 +512,7 @@ body{padding-bottom:0}
 </section>
 <section class="dark" id="zeitachse">
 <div class="wrap narrow prose">
-  <div class="eyebrow rv"><span class="num">04</span>2026 und 2027</div>
+  <div class="eyebrow rv"><span class="num">05</span>2026 und 2027</div>
   <h2 class="rv">Was du bekommst, steht beim Bund in keinem Gesetz</h2>
   <p class="sub rv d1">Das ist keine Zuspitzung, sondern der Befund. Die Beträge, die Bundesbeamtinnen 2026 auf der Bezügemitteilung sehen, beruhen nicht auf einem verkündeten Anpassungsgesetz, sondern auf Abschlagszahlungen — geleistet im Vorgriff auf eine gesetzliche Regelung, die es noch nicht gibt.</p>
 
@@ -471,7 +556,7 @@ body{padding-bottom:0}
 
 <section id="fallen">
 <div class="wrap narrow prose">
-  <div class="eyebrow rv"><span class="num">05</span>Wo das Geld verschwindet</div>
+  <div class="eyebrow rv"><span class="num">06</span>Wo das Geld verschwindet</div>
   <h2 class="rv">Drei Konstellationen, in denen es teuer wird</h2>
   <p class="sub rv d1">Nicht weil jemand betrügt. Sondern weil niemand den Anlass hat, es rechtzeitig zu erklären.</p>
 
@@ -501,7 +586,7 @@ body{padding-bottom:0}
 
 <section class="alt" id="scheidung">
 <div class="wrap narrow prose">
-  <div class="eyebrow rv"><span class="num">06</span>Scheidung</div>
+  <div class="eyebrow rv"><span class="num">07</span>Scheidung</div>
   <h2 class="rv">Geteilt wird nicht das Gehalt, sondern die Pension</h2>
   <p class="sub rv d1">Der Versorgungsausgleich erfasst alle Anrechte, die in der Ehezeit erworben wurden — und nur die. Die Ehezeit beginnt am ersten Tag des Heiratsmonats und endet am letzten Tag des Monats vor Zustellung des Scheidungsantrags (§ 3 Abs. 1 VersAusglG). Bei einer Ehe von bis zu drei Jahren findet der Ausgleich nur auf Antrag statt.</p>
 
@@ -535,50 +620,60 @@ body{padding-bottom:0}
   </div>
 </div>
 </section>
-<section id="geld">
-<div class="wrap narrow prose">
-  <div class="eyebrow rv"><span class="num">07</span>Was mit dem Geld passiert</div>
-  <h2 class="rv">Der Zuschlag landet auf dem Girokonto. Und dann?</h2>
-  <p class="sub rv d1">Bei drei Kindern reden wir je nach Land über 1.000 bis 2.500 Euro im Monat, die zusätzlich hereinkommen. Über zwanzig Jahre sind das sechsstellige Summen. Die allermeisten davon werden verlebt — was legitim ist, aber eine Entscheidung, die niemand bewusst trifft.</p>
-  <p class="rv d2">Wer einen Teil davon zurücklegen will, steht vor zwei Wegen. Beide haben steuerliche Eigenheiten, die in Ratgebertexten regelmäßig falsch dargestellt werden. Hier die geprüfte Fassung.</p>
 
-  <h3 class="rv" style="margin-top:34px;font-size:1.25rem">Weg A: Depot auf den Namen des Kindes</h3>
-  <p class="rv">Das Kind ist eigenständig steuerpflichtig und hat eigene Freibeträge: Grundfreibetrag 12.348 Euro (2026), Sparer-Pauschbetrag 1.000 Euro, Sonderausgaben-Pauschbetrag 36 Euro. Zusammen rund <strong>13.384 Euro Kapitalerträge im Jahr steuerfrei</strong>, wenn es keine anderen Einkünfte hat. Damit der Steuerabzug unterbleibt, braucht es eine Nichtveranlagungsbescheinigung des Wohnsitzfinanzamts — sie gilt höchstens drei Jahre und muss dann neu beantragt werden.</p>
-  <p class="rv">Laufend belastet wird das Depot durch die Vorabpauschale nach § 18 InvStG. Der Basisertrag beträgt 70 Prozent des Basiszinses; das Bundesfinanzministerium hat ihn mit Schreiben vom 13.01.2026 für 2026 auf <strong>3,20 Prozent</strong> festgesetzt. Nach der 30-prozentigen Teilfreistellung für Aktienfonds sind das rund 1,57 Prozent des Depotwerts, die steuerlich zufließen — bei 20.000 Euro Depot etwa 314 Euro im Jahr, also klar innerhalb des Sparer-Pauschbetrags.</p>
+<section id="checkliste">
+<div class="wrap narrow prose">
+  <div class="eyebrow rv"><span class="num">08</span>Was du prüfen kannst</div>
+  <h2 class="rv">Fünf Punkte, heute Abend erledigt</h2>
+  <p class="sub rv d1">Nichts davon dauert länger als zehn Minuten. Die Haken bleiben nur in diesem Browser — hier wird nichts gespeichert und nichts übertragen.</p>
+
+  <div class="chk rv d2" id="chk">
+    <label><input type="checkbox"><span class="t"><b>Stufe auf der Bezügemitteilung nachgesehen</b><span>Unter Familienzuschlag steht eine Stufe. Stufe 2 heißt ein Kind, Stufe 3 zwei Kinder und so weiter. Stimmt sie mit deiner Kinderzahl überein? Und ist Stufe 1 überhaupt ausgewiesen?</span></span></label>
+    <label><input type="checkbox"><span class="t"><b>Als Alleinerziehende Stufe 1 geprüft</b><span>Ohne Ehe, aber mit Kind im Haushalt steht dir Stufe 1 nach § 40 Abs. 1 Nr. 4 BBesG beziehungsweise der entsprechenden Landesnorm zu. Wenn sie fehlt, formlos bei der Bezügestelle nachfragen.</span></span></label>
+    <label><input type="checkbox"><span class="t"><b>Kindergeldzuordnung nach Trennung geklärt</b><span>Der kinderbezogene Anteil folgt dem Kindergeld — vollständig, nicht hälftig. Nach einer Trennung wird eine frühere Berechtigtenbestimmung gegenstandslos, wenn das Kind nur noch bei einem Elternteil lebt.</span></span></label>
+    <label><input type="checkbox"><span class="t"><b>Vor der Teilzeit einmal die Pension gerechnet</b><span>Jedes Jahr, das durch Teilzeit wegfällt, kostet 1,79375 Prozentpunkte Ruhegehaltssatz — es sei denn, du erreichst die 40 Jahre ohnehin. Die Versorgungsauskunft gibt es auf Antrag bei deiner Versorgungsstelle.</span></span></label>
+    <label><input type="checkbox"><span class="t"><b>Bei Landeswechsel die Differenz gekannt</b><span>Zwischen dem höchsten und dem niedrigsten Land liegen bei drei Kindern 755,57 Euro im Monat, mit Mietenstufen bis zu 1.612,57 Euro. Das gehört in jede Wechselüberlegung, bevor man unterschreibt.</span></span></label>
+  </div>
+  <div class="chkbar rv d3"><span class="track"><span class="fill" id="chkfill"></span></span><span id="chkcount">0 von 5</span></div>
+</div>
+</section>
+<section class="alt" id="geld">
+<div class="wrap narrow prose">
+  <div class="eyebrow rv"><span class="num">09</span>Was mit dem Geld passiert</div>
+  <h2 class="rv">Der Zuschlag landet auf dem Girokonto. Und dann?</h2>
+  <p class="sub rv d1">Bei drei Kindern reden wir je nach Land über 1.000 bis 2.500 Euro im Monat, die zusätzlich hereinkommen — über zwanzig Jahre sechsstellig. Wer davon etwas zurücklegen will, steht vor zwei Wegen. Beide haben steuerliche Eigenheiten, die in Ratgebertexten regelmäßig falsch dargestellt werden. Hier die geprüfte Fassung.</p>
+
+  <h3 class="rv" style="margin-top:32px;font-size:1.22rem">Depot auf den Namen des Kindes</h3>
+  <p class="rv">Das Kind ist eigenständig steuerpflichtig: Grundfreibetrag 12.348 Euro (2026), Sparer-Pauschbetrag 1.000 Euro, Sonderausgaben-Pauschbetrag 36 Euro — zusammen rund <strong>13.384 Euro Kapitalerträge im Jahr steuerfrei</strong>. Damit der Steuerabzug unterbleibt, braucht es eine Nichtveranlagungsbescheinigung des Wohnsitzfinanzamts; sie gilt höchstens drei Jahre. Laufend belastet wird das Depot durch die Vorabpauschale nach § 18 InvStG — das Bundesfinanzministerium hat den Basiszins mit Schreiben vom 13.01.2026 auf 3,20 Prozent festgesetzt, was nach Teilfreistellung rund 1,57 Prozent des Depotwerts steuerlich zufließen lässt.</p>
 
   <div class="warn rv">
-    <h4>Die zwei Nachteile, die wirklich zählen — und der eine, der nicht stimmt</h4>
-    <p><strong>Erstens die Krankenversicherung.</strong> Die beitragsfreie Familienversicherung nach § 10 SGB V setzt voraus, dass das Kind kein Gesamteinkommen über einem Siebtel der monatlichen Bezugsgröße hat — 2026 sind das <strong>565 Euro im Monat, also 6.780 Euro im Jahr</strong>. Kapitalerträge zählen dazu. Diese Grenze liegt bei etwa der Hälfte der steuerlichen Freigrenze. Ein Kind kann also in einem Bereich landen, in dem es keine Einkommensteuer zahlt, aber aus der Familienversicherung fällt und sich selbst versichern muss.</p>
-    <p><strong>Zweitens BAföG.</strong> § 29 BAföG lässt bei unter 30-Jährigen 15.000 Euro Vermögen anrechnungsfrei. Was darüber liegt, wird auf den Bewilligungszeitraum verteilt und angerechnet. Ein Depot mit 40.000 Euro kann den Anspruch vollständig aufzehren. Maßgeblich sind die Verhältnisse im Zeitpunkt der Antragstellung.</p>
-    <p><strong>Und der Punkt, der oft behauptet wird und falsch ist:</strong> Eigenes Vermögen oder eigene Kapitalerträge gefährden das <em>Kindergeld</em> nicht. Die Einkommensgrenze von 8.004 Euro für volljährige Kinder ist mit dem Steuervereinfachungsgesetz 2011 zum 01.01.2012 entfallen. An ihre Stelle trat ein Erwerbstätigkeitstest, der erst nach der ersten Berufsausbildung greift — und Kapitalerträge sind keine Erwerbstätigkeit.</p>
+    <h4>Zwei Nachteile, die wirklich zählen — und einer, der nicht stimmt</h4>
+    <p><strong>Die Krankenversicherung.</strong> Die beitragsfreie Familienversicherung nach § 10 SGB V setzt voraus, dass das Kind kein Gesamteinkommen über einem Siebtel der monatlichen Bezugsgröße hat — 2026 sind das <strong>565 Euro im Monat, also 6.780 Euro im Jahr</strong>. Kapitalerträge zählen dazu. Diese Grenze liegt bei etwa der Hälfte der steuerlichen. Ein Kind kann also keine Einkommensteuer zahlen und trotzdem aus der Familienversicherung fallen.</p>
+    <p><strong>BAföG.</strong> § 29 BAföG lässt bei unter 30-Jährigen 15.000 Euro Vermögen anrechnungsfrei. Ein Depot mit 40.000 Euro kann den Anspruch vollständig aufzehren. Maßgeblich sind die Verhältnisse bei Antragstellung.</p>
+    <p><strong>Was oft behauptet wird und falsch ist:</strong> Eigenes Vermögen des Kindes gefährdet das <em>Kindergeld</em> nicht. Die Einkommensgrenze von 8.004 Euro für volljährige Kinder ist zum 01.01.2012 entfallen; an ihre Stelle trat ein Erwerbstätigkeitstest, der erst nach der ersten Berufsausbildung greift — und Kapitalerträge sind keine Erwerbstätigkeit.</p>
   </div>
 
-  <p class="rv">Der dritte Punkt ist kein Nachteil, sondern eine Eigenschaft: Mit der Volljährigkeit endet die Vermögenssorge. Die Eltern müssen das Vermögen herausgeben und auf Verlangen Rechenschaft ablegen (§ 1698 BGB). Das Kind verfügt dann frei — auch anders, als die Eltern es gedacht hatten.</p>
-  <p class="rv">Wer deshalb zwischendurch Geld für eigene Zwecke entnimmt, riskiert zweierlei. Zivilrechtlich ist das eine Pflichtverletzung, die Schadensersatzansprüche auslöst; mehrere Oberlandesgerichte haben so entschieden, und die Einwilligung eines Minderjährigen heilt das nicht. Steuerlich kann das Finanzamt die gesamten Kapitalerträge den Eltern zurechnen, wenn diese das Vermögen faktisch wie eigenes behandeln — der Bundesfinanzhof verlangt, dass Eltern die Mittel „wie fremdes Vermögen verwalten; sie können es nicht als ihr eigenes behandeln" (Beschluss vom 03.03.2016, VIII B 25/14). Dann entfallen Grundfreibetrag und NV-Bescheinigung rückwirkend.</p>
+  <p class="rv">Dazu kommt eine Eigenschaft, die kein Nachteil ist, aber eine Entscheidung: Mit der Volljährigkeit endet die Vermögenssorge, die Eltern müssen herausgeben und auf Verlangen Rechenschaft ablegen (§ 1698 BGB). Wer zwischendurch für eigene Zwecke entnimmt, riskiert Schadensersatzansprüche des Kindes — und steuerlich die Zurechnung sämtlicher Erträge an sich selbst. Der Bundesfinanzhof verlangt, dass Eltern das Geld „wie fremdes Vermögen verwalten; sie können es nicht als ihr eigenes behandeln" (Beschluss vom 03.03.2016, VIII B 25/14).</p>
 
-  <h3 class="rv" style="margin-top:38px;font-size:1.25rem">Weg B: Fondsgebundene Police auf den eigenen Namen</h3>
-  <p class="rv">In der Ansparphase fließt dem Versicherungsnehmer nichts zu. Steuerpflichtig ist nach § 20 Abs. 1 Nr. 6 EStG erst der Unterschiedsbetrag bei Auszahlung. Fondswechsel innerhalb der Police lösen deshalb keine Steuer aus, und die Vorabpauschale greift nicht, weil der Versicherungsnehmer nicht Anteilinhaber der Fonds ist.</p>
-  <p class="rv">Bei Kapitalauszahlung gilt die sogenannte Zwölf-Zweiundsechzig-Regel: Läuft der Vertrag mindestens zwölf Jahre und wird nach Vollendung des 62. Lebensjahres ausgezahlt, ist nur die <strong>Hälfte des Unterschiedsbetrags</strong> anzusetzen. Beide Bedingungen müssen erfüllt sein; wird eine verfehlt, ist der volle Betrag steuerpflichtig. Für Verträge von 2005 bis 2011 lautet die Altersgrenze 60 Jahre — die 62 stehen nicht im § 20, sondern in der Anwendungsvorschrift des § 52 EStG.</p>
+  <h3 class="rv" style="margin-top:36px;font-size:1.22rem">Fondsgebundene Police auf den eigenen Namen</h3>
+  <p class="rv">In der Ansparphase fließt nichts zu, Fondswechsel lösen keine Steuer aus, die Vorabpauschale greift nicht. Bei Kapitalauszahlung gilt die Zwölf-Zweiundsechzig-Regel: mindestens zwölf Jahre Laufzeit und Auszahlung nach Vollendung des 62. Lebensjahres — dann ist nur die Hälfte des Unterschiedsbetrags anzusetzen. Beide Bedingungen müssen erfüllt sein. Für Verträge von 2005 bis 2011 lautet die Altersgrenze 60 Jahre.</p>
 
   <div class="note rv">
     <h4>Drei Begriffe, die in Beratungsgesprächen regelmäßig falsch fallen</h4>
-    <p><strong>Es ist kein Halbeinkünfteverfahren.</strong> Das gab es wirklich, es betraf Dividenden und Anteilsveräußerungen nach § 3 Nr. 40 EStG, und es wurde zum Veranlagungszeitraum 2009 abgeschafft. Mit Versicherungserträgen hatte es nie etwas zu tun. Korrekt heißt es: hälftiger Ansatz des Unterschiedsbetrags.</p>
-    <p><strong>Es sind keine 25 Prozent Abgeltungsteuer.</strong> § 32d Abs. 2 Nr. 2 EStG nimmt diese Erträge ausdrücklich vom Sondertarif aus. Versteuert wird zum <em>persönlichen</em> Einkommensteuersatz. Halbiert wird also nicht der Steuersatz, sondern die Bemessungsgrundlage.</p>
-    <p><strong>Es sind keine 30 Prozent Teilfreistellung.</strong> Die 30 Prozent nach § 20 InvStG gelten für den Direktanleger. Innerhalb der Police gewährt § 20 Abs. 1 Nr. 6 Satz 9 EStG pauschal <strong>15 Prozent</strong>, unabhängig von der Aktienquote.</p>
+    <p><strong>Es ist kein Halbeinkünfteverfahren.</strong> Das gab es wirklich, es betraf Dividenden nach § 3 Nr. 40 EStG und wurde zum Veranlagungszeitraum 2009 abgeschafft. Mit Versicherungserträgen hatte es nie etwas zu tun.</p>
+    <p><strong>Es sind keine 25 Prozent Abgeltungsteuer.</strong> § 32d Abs. 2 Nr. 2 EStG nimmt diese Erträge ausdrücklich vom Sondertarif aus. Versteuert wird zum persönlichen Satz. Halbiert wird nicht der Steuersatz, sondern die Bemessungsgrundlage.</p>
+    <p><strong>Es sind keine 30 Prozent Teilfreistellung.</strong> Die gelten für den Direktanleger. In der Police sind es nach § 20 Abs. 1 Nr. 6 Satz 9 EStG pauschal 15 Prozent, unabhängig von der Aktienquote.</p>
   </div>
 
-  <p class="rv">Praktisch heißt das: Von 100.000 Euro Ertrag bleiben nach 15 Prozent Teilfreistellung 85.000 Euro, davon die Hälfte — also 42.500 Euro — steuerpflichtig zum persönlichen Satz. Bei 30 Prozent Grenzsteuersatz sind das 12.750 Euro, eine effektive Belastung von 12,75 Prozent des Ertrags. Zum Vergleich: Im Depot wären auf denselben Ertrag nach 30 Prozent Teilfreistellung rund 18,5 Prozent Abgeltungsteuer plus Soli fällig. <span style="color:var(--ink3)">Die Reihenfolge — erst Teilfreistellung, dann Hälftelung — ergibt sich aus dem Gesetzeswortlaut, eine ausdrückliche Bestätigung der Finanzverwaltung dazu habe ich nicht gefunden.</span></p>
-  <p class="rv">Ein Verfahrensdetail, das Geld kostet, wenn man es nicht kennt: Der Versicherer behält bei Auszahlung Kapitalertragsteuer auf den <em>vollen</em> Unterschiedsbetrag ein; § 43 EStG lässt die Hälftelung beim Steuerabzug ausdrücklich unberücksichtigt. Sie wird erst in der Einkommensteuererklärung gewährt. Wer keine abgibt, verschenkt den Vorteil.</p>
-  <p class="rv">Wählt man statt der Kapitalauszahlung die lebenslange Rente, greift § 20 EStG gar nicht. Dann wird nur der Ertragsanteil nach § 22 EStG versteuert: bei Rentenbeginn mit 62 sind das 21 Prozent, mit 65 achtzehn, mit 67 siebzehn — und dieser Satz bleibt für die gesamte Bezugsdauer.</p>
+  <p class="rv">Von 100.000 Euro Ertrag bleiben damit nach Teilfreistellung 85.000 Euro, davon die Hälfte steuerpflichtig — bei 30 Prozent Grenzsteuersatz eine effektive Belastung von 12,75 Prozent. Ein Verfahrensdetail, das Geld kostet: Der Versicherer behält Kapitalertragsteuer auf den <em>vollen</em> Betrag ein, die Hälftelung gibt es erst in der Steuererklärung. Wer keine abgibt, verschenkt den Vorteil. Wählt man statt Kapital die lebenslange Rente, greift nur der Ertragsanteil nach § 22 EStG: mit 62 sind das 21 Prozent, mit 65 achtzehn, mit 67 siebzehn — für die gesamte Bezugsdauer.</p>
 
-  <h3 class="rv" style="margin-top:38px;font-size:1.25rem">Die Rechnung, ehrlich gerechnet</h3>
-  <p class="rv">400 Euro im Monat, zwanzig Jahre, sechs Prozent: Das ergibt <strong>184.816 Euro</strong>, wenn man sechs Prozent nominal durch zwölf teilt — die marktübliche Konvention. Versteht man sechs Prozent als <em>effektive</em> Jahresrendite, wie es bei ETF-Angaben üblich ist, sind es <strong>181.375 Euro</strong>. Eingezahlt wurden 96.000 Euro.</p>
-  <p class="rv">Was in dieser Rechnung fehlt, ist der ehrliche Teil: die Kosten. Die Verbraucherzentrale beziffert die Effektivkosten fondsgebundener Policen typischerweise auf rund zwei Prozent im Jahr und hält provisionsvermittelte Verträge generell für teuer. Zwei Prozent Effektivkosten auf zwanzig Jahre fressen einen erheblichen Teil des Steuervorteils wieder auf. Ob die Police oder das Depot am Ende vorn liegt, entscheidet sich deshalb nicht an der Steuer allein, sondern am Produkt — und daran, wie hoch dein persönlicher Steuersatz bei Auszahlung sein wird.</p>
-  <p class="rv">Das ist die Rechnung, die man aufmachen muss. Nicht die mit der schöneren Zahl.</p>
+  <h3 class="rv" style="margin-top:36px;font-size:1.22rem">Und die Rechnung, ehrlich gerechnet</h3>
+  <p class="rv">400 Euro im Monat, zwanzig Jahre, sechs Prozent ergeben <strong>184.816 Euro</strong> bei nominaler Monatsverzinsung, <strong>181.375 Euro</strong>, wenn man sechs Prozent als effektive Jahresrendite versteht. Eingezahlt wurden 96.000 Euro.</p>
+  <p class="rv">Was in dieser Rechnung fehlt, ist der ehrliche Teil: die Kosten. Die Verbraucherzentrale beziffert die Effektivkosten fondsgebundener Policen typischerweise auf rund zwei Prozent im Jahr und hält provisionsvermittelte Verträge generell für teuer. Über zwanzig Jahre frisst das einen erheblichen Teil des Steuervorteils wieder auf. Ob Police oder Depot vorn liegt, entscheidet sich deshalb nicht an der Steuer allein, sondern am Produkt — und daran, wie hoch dein persönlicher Steuersatz bei Auszahlung sein wird. Das ist die Rechnung, die man aufmachen muss. Nicht die mit der schöneren Zahl.</p>
 </div>
 </section>
 
-<section class="alt">
+<section>
 <div class="wrap narrow">
   <div class="cta rv">
     <h2>Wir rechnen es durch. Auf den Cent.</h2>
@@ -593,8 +688,8 @@ body{padding-bottom:0}
 <footer class="legal">
 <div class="wrap narrow">
   <h4>Rechtsstand und Reichweite</h4>
-  <p>Stand: 25. September 2026. Diese Seite informiert und ersetzt weder Rechts- noch Steuer- noch Versorgungsberatung. Besoldung und Versorgung sind Landesrecht — maßgeblich sind deine Bezügemitteilung und die Auskunft der für dich zuständigen Stelle. Die steuerliche Beurteilung im Einzelfall gehört zu einer Steuerberaterin oder einem Steuerberater, familienrechtliche Fragen zur Fachanwältin oder zum Fachanwalt für Familienrecht.</p>
-  <p>Hinweis zu den Zahlen für 2026: Die Beträge des Bundes beruhen auf Abschlagszahlungen unter dem Vorbehalt einer späteren gesetzlichen Regelung, nicht auf einem verkündeten Anpassungsgesetz. Mehrere Ländertabellen sind als Entwurf oder vorläufig gekennzeichnet, solange die Verkündung im Gesetzblatt aussteht.</p>
+  <p>Stand: 26. September 2026. Diese Seite informiert und ersetzt weder Rechts- noch Steuer- noch Versorgungsberatung. Besoldung und Versorgung sind Landesrecht — maßgeblich sind deine Bezügemitteilung und die Auskunft der für dich zuständigen Stelle. Die steuerliche Beurteilung im Einzelfall gehört zu einer Steuerberaterin oder einem Steuerberater, familienrechtliche Fragen zur Fachanwältin oder zum Fachanwalt für Familienrecht.</p>
+  <p>Hinweis zu den Zahlen für 2026: Die Beträge des Bundes beruhen auf Abschlagszahlungen unter dem Vorbehalt einer späteren gesetzlichen Regelung, nicht auf einem verkündeten Anpassungsgesetz. Mehrere Ländertabellen sind als Entwurf oder vorläufig gekennzeichnet, solange die Verkündung im Gesetzblatt aussteht. Der Rechner gibt die Beträge der höheren Besoldungsgruppen wieder; für A 3 bis A 10 kommen Erhöhungsbeträge hinzu.</p>
 
   <h4>Quellen</h4>
   <p class="srcs">Normen: Art. 33 Abs. 5 GG · §§ 6, 39, 40, 41 BBesG und Anlage V BBesG · §§ 5, 6, 14, 50, 50a, 57, 58 BeamtVG · Bundesversorgungsteilungsgesetz · §§ 3, 16 VersAusglG · §§ 20, 22, 32a, 32d, 43, 52, 64 EStG · § 18 InvStG · § 10 SGB V · § 16 SGB IV · § 29 BAföG · §§ 1626, 1642, 1664, 1698 BGB · MuSchEltZV · Landesbesoldungsgesetze: § 40 ff. LBesGBW · Art. 35, 36 BayBesG · § 40, § 40a BBesG BE · § 40, § 40a BbgBesG · § 35 BremBesG · § 45 HmbBesG · § 43 HBesG · § 42, § 43a LBesG M-V · § 35 NBesG · § 43 LBesG NRW · § 41, § 41a LBesG RP · § 41 SBesG · § 40 SächsBesG · § 38 BesG LSA · § 44 SHBesG · §§ 37, 38 ThürBesG<br><br>
@@ -605,8 +700,8 @@ body{padding-bottom:0}
 </footer>
 
 <div class="dock" id="dock">
-  <div class="dt"><b>Alle 17 Dienstherren im Vergleich</b><span>Beträge, Rechtsgrundlage und Besonderheiten</span></div>
-  <a class="btn btn-g" href="#vergleich">Zum Vergleich</a>
+  <div class="dt"><b>Wie viel steht dir zu?</b><span>Rechner für alle 17 Dienstherren</span></div>
+  <a class="btn btn-g" href="#rechner">Zum Rechner</a>
 </div>
 <script>
 (function(){
@@ -833,9 +928,171 @@ tbtn.addEventListener("click", function(){
   tbtn.textContent = open ? "Tabelle ausblenden" : "Als Tabelle anzeigen";
 });
 
+
+/* ---------- Rechner: Zahlenwerk je Dienstherr ---------- */
+/* s1 = Stufe 1, c1/c2 = Betrag fuer das erste/zweite Kind,
+   c3 = ab dem dritten, c4 = ab dem vierten, falls abweichend.
+   regio = Land rechnet nach Mietenstufen; dann nur belegte Randwerte. */
+var CALC = {
+  "Bund": {s1:181.36, c1:154.99, c2:154.99, c3:482.89, c4:482.89},
+  "BW":   {s1:180.46, c1:157.78, c2:157.78, c3:989.17, c4:989.17},
+  "BY":   {regio:{0:"87,51 € in Ortsklasse I bis 170,26 € in Ortsklasse VII",
+                  1:"506,90 € in Ortsklasse I (Stufe 2, einschließlich Stufe 1)",
+                  3:"1.002,54 € in Ortsklasse I bis 1.359,45 € in Ortsklasse VII"}},
+  "BE":   {s1:0,      c1:148.44, c2:148.44, c3:819.76, c4:678.99},
+  "BB":   {s1:0,      c1:377.16, c2:377.16, c3:888.39, c4:888.39},
+  "HB":   {s1:174.54, c1:265.85, c2:265.85, c3:610.60, c4:587.27},
+  "HH":   {s1:165.84, c1:193.14, c2:193.14, c3:635.00, c4:635.00},
+  "HE":   {s1:177.30, c1:360.57, c2:360.57, c3:831.08, c4:831.08},
+  "MV":   {s1:164.77, c1:198.83, c2:198.83, c3:820.00, c4:820.00},
+  "NI":   {s1:170.36, c1:145.61, c2:145.61, c3:512.37, c4:512.37},
+  "NW":   {regio:{0:"173,50 € — Stufe 1 ist in NRW als einziger Bestandteil nicht regionalisiert",
+                  1:"324,52 € in Mietenstufe I bis 955,05 € in Mietenstufe VII (einschließlich Stufe 1)",
+                  3:"1.436,24 € in Mietenstufe I bis 2.586,52 € in Mietenstufe VII"}},
+  "RP":   {s1:88.03,  c1:246.97, c2:246.97, c3:726.00, c4:726.00, ms:"Ab dem dritten Kind kommt ein Mietenstufenaufschlag hinzu: 19 € in Stufe V, 43 € in VI, 68 € in VII."},
+  "SL":   {s1:164.48, c1:165.31, c2:165.31, c3:781.68, c4:781.68},
+  "SN":   {s1:279.58, c1:279.58, c2:279.58, c3:795.41, c4:795.41},
+  "ST":   {s1:169.04, c1:184.85, c2:353.89, c3:818.98, c4:818.98},
+  "SH":   {s1:176.24, c1:199.85, c2:199.85, c3:516.48, c4:516.48},
+  "TH":   {}
+};
+
+function kinderSumme(c, n){
+  var t = 0;
+  for (var i=1;i<=n;i++){
+    if (i===1) t += c.c1;
+    else if (i===2) t += c.c2;
+    else if (i===3) t += c.c3;
+    else t += (c.c4 !== undefined ? c.c4 : c.c3);
+  }
+  return t;
+}
+
+var selLand = document.getElementById("f-land");
+var selKind = document.getElementById("f-kinder");
+var selStand = document.getElementById("f-stand");
+var cbOed = document.getElementById("f-oed");
+var out = document.getElementById("out");
+
+/* Auswahlliste alphabetisch, Bund zuerst */
+(function(){
+  var liste = D.slice().sort(function(a,b){
+    if (a.ab === "Bund") return -1;
+    if (b.ab === "Bund") return 1;
+    return a.n.localeCompare(b.n, "de");
+  });
+  liste.forEach(function(o){
+    var op = document.createElement("option");
+    op.value = o.ab; op.textContent = o.n;
+    if (o.ab === "Bund") op.selected = true;
+    selLand.appendChild(op);
+  });
+})();
+
+function findD(ab){ for (var i=0;i<D.length;i++) if (D[i].ab === ab) return D[i]; return null; }
+
+function summe(ab, kinder, stand, oed){
+  var c = CALC[ab];
+  if (!c || c.regio || c.s1 === undefined) return null;
+  var hatS1 = (stand === "verh") || (stand === "allein" && kinder >= 1);
+  var s1 = hatS1 ? c.s1 : 0;
+  if (hatS1 && oed) s1 = s1 / 2;
+  return { s1: s1, kinder: kinderSumme(c, kinder), hatS1: hatS1, total: s1 + kinderSumme(c, kinder) };
+}
+
+function render(){
+  var ab = selLand.value;
+  var kinder = parseInt(selKind.value, 10);
+  var stand = selStand.value;
+  var oed = cbOed.checked;
+  var o = findD(ab);
+  var c = CALC[ab];
+  var html = "";
+
+  if (ab === "TH"){
+    html = '<div class="big">nicht belegbar</div>'
+         + '<div class="cap">Thüringen</div>'
+         + '<p class="cnote">Für 2026 liegt keine Tabelle vor, und die Anlage zu § 38 ThürBesG lässt zwei Lesarten zu, die um über 1.000 € im Monat auseinanderliegen. Hier wird nicht geschätzt — die verbindliche Auskunft gibt das Thüringer Landesamt für Finanzen.</p>';
+    out.innerHTML = html; return;
+  }
+
+  if (c.regio){
+    var txt = c.regio[kinder];
+    html = '<div class="big">' + (txt ? "je nach Wohnort" : "nicht belegbar") + '</div>'
+         + '<div class="cap">' + esc(o.n) + ' rechnet nach ' + (ab === "BY" ? "Ortsklassen" : "Mietenstufen") + '</div>'
+         + '<p class="cnote">'
+         + (txt
+            ? 'Bei ' + (kinder === 0 ? 'keinem Kind' : kinder + (kinder === 1 ? ' Kind' : ' Kindern')) + ': <strong style="color:#fff">' + txt + '</strong>. Welche Stufe für dich gilt, richtet sich nach deinem Hauptwohnsitz.'
+            : 'Für diese Kinderzahl liegen mir keine belegten Werte je Stufe vor. Belegt sind in ' + esc(o.n) + ' nur die Randwerte für null, ein und drei Kinder. Geschätzt wird hier nichts — die genaue Zahl nennt dir deine Bezügestelle.')
+         + '</p>';
+    out.innerHTML = html; return;
+  }
+
+  var r = summe(ab, kinder, stand, oed);
+  if (!r || r.total === 0){
+    out.innerHTML = '<div class="big">0,00 €</div><div class="cap">Kein Familienzuschlag in dieser Konstellation</div>'
+      + '<p class="cnote">' + (c.s1 === 0
+         ? esc(o.n) + ' hat den Verheiratetenanteil abgeschafft. Ohne Kinder gibt es hier keinen Familienzuschlag.'
+         : 'Ohne Ehe und ohne Kind im Haushalt entsteht kein Anspruch.') + '</p>';
+    return;
+  }
+
+  html = '<div class="big">' + eur(r.total) + '</div>'
+       + '<div class="cap">pro Monat, zusätzlich zum Grundgehalt · ' + esc(o.n) + '</div>'
+       + '<div class="breakdown">';
+  if (r.hatS1) html += '<div><span>Stufe 1' + (oed ? ' (halbiert)' : '') + '</span><span>' + eur(r.s1) + '</span></div>';
+  if (kinder > 0) html += '<div><span>' + kinder + (kinder === 1 ? ' Kind' : ' Kinder') + '</span><span>' + eur(r.kinder) + '</span></div>';
+  html += '<div><span>Im Jahr</span><span>' + eur(r.total * 12) + '</span></div></div>';
+
+  /* Vergleich mit dem hoechsten und dem niedrigsten belegbaren Land */
+  var he = summe("HE", kinder, stand, oed);
+  var ni = summe("NI", kinder, stand, oed);
+  if (he && ni && r.total > 0){
+    var d = he.total - r.total;
+    if (ab === "HE"){
+      html += '<div class="cmp">Das ist der höchste belegbare Wert in Deutschland. In Niedersachsen wären es <b>' + eur(ni.total) + '</b> — ' + eur(r.total - ni.total) + ' weniger im Monat.</div>';
+    } else if (d > 0.005){
+      html += '<div class="cmp">In Hessen wären es <b>' + eur(he.total) + '</b> — das sind <b>' + eur(d) + '</b> mehr im Monat, ' + eur(d * 12) + ' im Jahr.</div>';
+    } else {
+      html += '<div class="cmp">Damit liegst du über dem hessischen Wert von ' + eur(he.total) + '.</div>';
+    }
+  }
+
+  var notes = [];
+  if (stand === "allein" && kinder >= 1) notes.push("Stufe 1 steht dir auch ohne Ehe zu, weil ein Kind in deinem Haushalt lebt — § 40 Abs. 1 Nr. 4 BBesG und die entsprechenden Landesnormen.");
+  if (oed && r.hatS1) notes.push("Stufe 1 ist halbiert, weil beide im öffentlichen Dienst sind (§ 40 Abs. 4 BBesG). Der kinderbezogene Anteil wird dagegen nicht geteilt — er geht einmal in voller Höhe an den, der das Kindergeld bekommt.");
+  if (c.s1 === 0) notes.push(o.n + " hat den Verheiratetenanteil vollständig abgeschafft.");
+  if (c.ms && kinder >= 3) notes.push(c.ms);
+  if (ab === "Bund") notes.push("Die Bundesbeträge 2026 beruhen auf Abschlagszahlungen unter Vorbehalt, nicht auf einem verkündeten Gesetz.");
+  if (notes.length) html += '<p class="cnote">' + notes.join(" ") + '</p>';
+
+  out.innerHTML = html;
+}
+
+[selLand, selKind, selStand, cbOed].forEach(function(el){
+  el.addEventListener("change", render);
+});
+render();
+
+/* ---------- Checkliste ---------- */
+var chk = document.getElementById("chk");
+if (chk){
+  var boxes = chk.querySelectorAll('input[type="checkbox"]');
+  var fill = document.getElementById("chkfill");
+  var count = document.getElementById("chkcount");
+  var upd = function(){
+    var n = 0;
+    for (var i=0;i<boxes.length;i++) if (boxes[i].checked) n++;
+    fill.style.width = (n / boxes.length * 100) + "%";
+    count.textContent = n + " von " + boxes.length;
+  };
+  for (var m=0;m<boxes.length;m++) boxes[m].addEventListener("change", upd);
+  upd();
+}
+
 /* ---------- Sticky dock ---------- */
 var dock = document.getElementById("dock");
-var anchor = document.getElementById("vergleich");
+var anchor = document.getElementById("rechner");
 var seen = false;
 if (dock && anchor && "IntersectionObserver" in window){
   var io2 = new IntersectionObserver(function(es){
